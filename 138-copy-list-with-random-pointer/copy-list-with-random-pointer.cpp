@@ -18,25 +18,25 @@ class Solution {
 public:
     Node* copyRandomList(Node* head) {
         if(head==NULL) return NULL;
-        unordered_map<Node*,Node*> mp;
-
         Node* newHead = new Node(head->val);
-        mp[head] = newHead; // Map Stores Ptr to Old & New Nodes
-        Node* oldTemp = head->next;
-        Node* newTemp = newHead;
-        
-        while(oldTemp!=NULL){ // Creating Simple Copy of Linked List
-            Node* copyNode = new Node(oldTemp->val);
-            mp[oldTemp] = copyNode;
-            newTemp->next = copyNode;
-            oldTemp = oldTemp->next;
-            newTemp = newTemp->next;
+        unordered_map<Node*, Node*> mp;
+
+        mp[head] = newHead;
+        Node* oldtemp = head->next;
+        Node* newtemp = newHead;
+
+        while(oldtemp!=NULL){
+            Node* copyNode = new Node(oldtemp->val);
+            mp[oldtemp] = copyNode;
+            newtemp->next = copyNode;
+            oldtemp = oldtemp->next;
+            newtemp = newtemp->next;
         }
-        oldTemp = head; newTemp = newHead;
-        while(oldTemp!=NULL){
-            newTemp->random=mp[oldTemp->random]; // Creating Random Ptr Nodes Connection
-            oldTemp=oldTemp->next;
-            newTemp=newTemp->next;
+        oldtemp = head; newtemp = newHead;
+        while(oldtemp!=NULL){
+            newtemp->random = mp[oldtemp->random];
+            oldtemp = oldtemp->next;
+            newtemp = newtemp->next; 
         }
         return newHead;
     }
