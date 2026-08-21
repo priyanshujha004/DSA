@@ -10,18 +10,12 @@ public:
             if(idx==s.size()-1) {
                 sum+= mp[s[idx]]; 
                 curr = mp[s[idx]]; 
-                prev = mp[s[idx]];
             }
             else {
-                if(curr<prev) {
-                    sum-= mp[s[idx]];
-                    prev = mp[s[idx]];
-                }
-                else if(curr>=prev){
-                    sum+= mp[s[idx]]; 
-                    prev = mp[s[idx]];
-                }
-            } 
+                if(curr<prev) sum-= mp[s[idx]];
+                else if(curr>=prev) sum+= mp[s[idx]]; 
+            }
+            prev = mp[s[idx]]; 
         }
         return sum;
     }
