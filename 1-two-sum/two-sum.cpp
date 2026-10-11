@@ -5,13 +5,11 @@ public:
         for(int idx=0; idx<nums.size(); idx++){
             mp[nums[idx]]=idx;
         }
-        int m,n;
-        for(int jdx=0; jdx<nums.size(); jdx++){
-            if(mp.find(target-nums[jdx])!=mp.end() && jdx!=mp[target-nums[jdx]]){
-                m = jdx;
-                n = mp[target-nums[jdx]];
+        for(int idx=0; idx<nums.size(); idx++){
+            if(mp.find(target-nums[idx])!=mp.end() && idx!=mp[target-nums[idx]]){
+                return {idx,mp[target-nums[idx]]};
             }
         }
-        return {m,n};
+        return {};
     }
 };
